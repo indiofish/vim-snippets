@@ -1,6 +1,9 @@
-extends c
-
 ## STL Collections
+## Preprocessor
+# #include <...>
+snippet incc
+	#include <${1:iostream}>
+
 # std::array
 snippet array
 	std::array<${1:T}, ${2:N}> ${3};
@@ -72,11 +75,11 @@ snippet mu
 snippet cl
 	class ${1:`vim_snippets#Filename('$1', 'name')`}
 	{
-	public:
+		public:
 		$1(${2});
 		~$1();
 
-	private:
+		private:
 		${0:/* data */}
 	};
 # member function implementation
