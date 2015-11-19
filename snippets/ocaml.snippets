@@ -1,0 +1,173 @@
+#raise
+snippet rs 
+raise (${1:Not_found})
+
+#open
+snippet open
+	let open ${1:module} in
+	${2:e}
+#try
+snippet try 
+	try ${1:e}
+	with ${2:Not_found} -> ${3:()}
+
+#ref
+snippet ref 
+	let ${1:name} = ref ${2:val} in
+	${3:e}
+
+#match
+snippet match 
+	match ${1:(* e1 *)} with
+	| ${2:p} -> ${3:e2}
+
+#match list
+snippet matchl 
+	match ${1:list} with
+	| [] -> ${2:()}
+	| h::t -> ${3:()}
+
+snippet matcho "pattern match on an option type"
+	match ${1:x} with
+	| Some(${2:y}) -> ${3:()}
+	| None -> ${4:()}
+
+#fun "anonymous function"
+snippet fun
+	(fun ${1:x} -> ${2:x})
+
+#comment
+snippet cc
+	(* ${1:comment} *)
+
+# "let .. in binding"
+snippet let
+	let ${1:x} = ${2:v} in
+	${3:e}
+# letrec
+snippet lr
+	let rec ${1:f} =
+	${2:expr}
+
+#if
+snippet If
+	if ${1:(* condition *)} then
+	${2:(* A *)}
+#if then else
+snippet if 
+	if ${1:(* condition *)} then
+	${2:(* A *)}
+else
+	${3:(* B *)}
+
+#while
+snippet while 
+	while ${1:(* condition *)} do
+	${2:(* A *)}
+	done
+#for
+snippet for "for"
+	for ${1:i} = ${2:1} to ${3:10} do
+	${4:(* BODY *)}
+	done
+#Match
+snippet Match 
+	match ${1:(* e1 *)} with
+	| ${2:p} -> ${3:e2}
+#"class"
+snippet class 
+	class ${1:name} = object
+	${2:methods}
+end
+
+#"obj"
+snippet obj 
+	object
+	${2:methods}
+end
+
+#"object"
+snippet Obj 
+	object (self)
+	${2:methods}
+end
+
+#"object functional update"
+snippet {{ 
+	{< ${1:x} = ${2:y} >}
+
+#"beg"
+snippet beg 
+	begin
+	${1:block}
+end
+
+#"module instantiantion with functor"
+snippet ml 
+	module ${1:Mod} = ${2:Functor}(${3:Arg})
+
+#"module - no signature"
+snippet mod 
+	module ${1:(* Name *)} = struct
+	${2:(* BODY *)}
+end
+
+#"module with signature"
+snippet Mod 
+	module ${1:(* Name *)} : ${2:(* SIG *)} = struct
+	${3:(* BODY *)}
+end
+
+#"anonymous signature"
+snippet sig 
+sig
+	${2:(* BODY *)}
+end
+
+#"functor signature or anonymous functor"
+snippet sigf 
+	functor (${1:Arg} : ${2:ARG}) -> ${3:(* BODY *)}
+
+#"define functor - no signature"
+snippet func 
+	module ${1:M} (${2:Arg} : ${3:ARG}) = struct
+	${4:(* BODY *)}
+end
+
+#"define functor - with signature"
+snippet Func 
+	module ${1:M} (${2:Arg} : ${3:ARG}) : ${4:SIG} = struct
+	${5:(* BODY *)}
+end
+
+#"Declare module signature"
+snippet mot 
+	module type ${1:(* Name *)} = sig
+	${2:(* BODY *)}
+end
+
+#"Module with anonymous signature"
+snippet module 
+	module ${1:(* Name *)} : sig
+	${2:(* SIGNATURE *)}
+end = struct
+	${3:(* BODY *)}
+end
+
+#"odoc"
+snippet oo 
+	(** ${1:odoc} *)
+
+#"inline qtest"
+snippet qt 
+	(*$T ${1:name}
+	${2:test}
+	*)
+#arrow
+snippet -
+	->
+
+#print_endline
+snippet pr
+	let _ = print_endline ${1}
+	
